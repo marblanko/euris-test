@@ -1,0 +1,33 @@
+
+
+<label>title</label>
+	<input type="text"
+	[(ngModel)]="prodTitle"><br/>
+		<label>category</label>
+		<input type="text"
+	[(ngModel)]="prodCategory"><br/>
+		<label>price</label>
+		<input type="text"
+	[(ngModel)]="prodPrice"><br/>
+	<label>description</label>
+	<input type="text"
+	[(ngModel)]="prodDesc"><br/>
+	<label>employee</label>
+	<input type="text"
+	[(ngModel)]="prodEmployee"><br/>
+
+ <button
+	(click)="addProduct()">Add Product</button>
+
+
+
+
+<div *ngIf="products && products.length">
+<ul>
+	<li *ngFor="let product of products">
+		ID: {{product.id}} - title: {{product.data.title}}<br/>
+		desc: {{product.data.description}} - employee: {{product.data.employee}}<br/>
+		category: {{product.data.category}} - price:  {{product.data.price}}
+	</li>
+</ul>
+</div>
