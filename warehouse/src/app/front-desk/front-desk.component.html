@@ -1,33 +1,49 @@
-
-
-<label>title</label>
-	<input type="text"
-	[(ngModel)]="prodTitle"><br/>
-		<label>category</label>
-		<input type="text"
-	[(ngModel)]="prodCategory"><br/>
-		<label>price</label>
-		<input type="text"
-	[(ngModel)]="prodPrice"><br/>
-	<label>description</label>
-	<input type="text"
-	[(ngModel)]="prodDesc"><br/>
-	<label>employee</label>
-	<input type="text"
-	[(ngModel)]="prodEmployee"><br/>
-
- <button
-	(click)="addProduct()">Add Product</button>
-
-
-
-
-<div *ngIf="products && products.length">
-<ul>
-	<li *ngFor="let product of products">
-		ID: {{product.id}} - title: {{product.data.title}}<br/>
-		desc: {{product.data.description}} - employee: {{product.data.employee}}<br/>
-		category: {{product.data.category}} - price:  {{product.data.price}}
-	</li>
-</ul>
+<div class="tool-block">
+    <button *ngIf="isWide" (click)="isWide = false">Grid Layout</button>
+    <button *ngIf="!isWide" (click)="isWide = true">Panel Layout</button>
+    <button *ngIf="!menuOpen" (click)="menuOpen = true">Add New Product +</button>
+    <button class="" *ngIf="menuOpen" (click)="menuOpen = false">Add New Product -</button>
+    <div class="add-product-block" *ngIf="menuOpen">
+        <ul>
+            <li>
+                <label>title</label>
+                <br/>
+                <input class="product-input" type="text" [(ngModel)]="prodTitle">
+            </li>
+            <li>
+                <label>description</label>
+                <br/>
+                <input class="product-input" type="text" [(ngModel)]="prodDesc">
+            </li>
+            <li>
+                <label>price</label>
+                <br/>
+                <input class="product-input" type="text" [(ngModel)]="prodPrice">
+            </li>
+            <li>
+                <label>category</label>
+                <br/>
+                <input class="product-input" type="text" [(ngModel)]="prodCategory">
+            </li>
+            <li>
+                <label>employee</label>
+                <br/>
+                <input class="product-input" type="text" [(ngModel)]="prodEmployee">
+            </li>
+        </ul>
+        <button (click)="addProduct()">Add Product</button>
+    </div>
+</div>
+<div class="main-product-block" *ngIf="products && products.length">
+    <div class="product-list" [ngClass]="{'wide': isWide, 'narrow': !isWide}" *ngFor="let product of products">
+        <button class="delete-button" (click)="delProduct(product)">Delete</button>
+        <h2 class="product-title">{{product.data.title}}</h2>
+        <ul class="product-details">
+            <li class="product-id">ID: {{product.id}}</li>
+            <li class="product-description">description: {{product.data.description}}</li>
+            <li class="product-price">price: {{product.data.price}}</li>
+            <li class="product-category">category: {{product.data.category}}</li>
+            <li class="product-employee">employee: {{product.data.employee}}</li>
+        </ul>
+    </div>
 </div>

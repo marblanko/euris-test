@@ -18,12 +18,16 @@ export class FrontDeskComponent implements OnInit {
 	prodPrice : number;
 	prodEmployee : string;
 	prodDesc : string;
+	isWide : boolean;
+	menuOpen : boolean;
 
 
   constructor(private checkStockService : CheckStockService) { }
 
   ngOnInit() {
 
+  	let isWide = false;
+  	let menuOpen = false;
   	this.getProducts();
   }
 
@@ -36,7 +40,7 @@ export class FrontDeskComponent implements OnInit {
 	);
   }
 
-  addProduct() {
+  addProduct(product: IProduct) {
   	let productObject = {
   		title : this.prodTitle,
   		category : this.prodCategory,
@@ -47,9 +51,18 @@ export class FrontDeskComponent implements OnInit {
   	   this.checkStockService.addProduct( productObject as IProduct)
        .subscribe(product => {
         this.products.push(product);
-	    console.dir(productObject);
+	    console.dir(product);
 	  });
   
 }
+
+
+
+  delProduct(product: IProduct): void {
+    this.products = this.products.filter(h => h !== product);
+    this.checkStockService.delProduct(product).subscribe();
+  }
+
+
 }
 

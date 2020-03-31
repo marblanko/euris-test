@@ -1,0 +1,82 @@
+div.tool-block {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+div.tool-block button {
+    background: #FFA56B;
+    border-radius: 1.5rem;
+}
+
+div.add-product-block {
+    background: #FF8C41;
+    border-radius: 1.5rem;
+    box-shadow: 5px 5px 20px #FFF;
+    padding: 1rem;
+    position: absolute;
+    left: 6rem;
+    top: 2rem;
+    z-index: 3000;
+}
+
+input.product-input {
+    width: 10rem;
+    margin: .1rem 0 .3rem 0;
+}
+
+div.main-product-block {
+    vertical-align: top;
+    text-align: left;
+    width: 100%;
+}
+
+div.product-list {
+    padding: 1rem;
+    background: #FFA710;
+    border-radius: 1.5rem;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.narrow {
+    width: 20rem;
+    float: left;
+    margin: .5rem .5rem 0 0;
+}
+
+.wide {
+    max-width: 100%;
+    float: none;
+    margin: .5rem 0 0 0;
+}
+
+h2.product-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0 0 .2rem 0;
+}
+
+.product-details {
+    font-size: 1rem;
+}
+
+button {
+    border-radius: .8rem;
+    border: none;
+    padding: .5rem;
+}
+
+button.delete-button {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    color: #FFF;
+    background: #A26600;
+}
+
+button.delete-button:hover {
+    color: #FFF;
+    background: #C4001B;
+}
