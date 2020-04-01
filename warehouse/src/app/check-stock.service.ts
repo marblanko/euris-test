@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IProduct } from './product';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
@@ -23,49 +23,32 @@ httpOptions = {
 
 
   	getProducts() : Observable<IProduct[]> {
-		return this.http.get<IProduct[]>(this.storeUrl).pipe(
-			 tap(data => console.log(JSON.stringify(data))),
+		return this.http.get<IProduct[]>(this.storeUrl, this.httpOptions).pipe(
 			catchError(this.handleError)
 			);
 	}
 
 	addProduct (product: IProduct): Observable<IProduct> {
-    return this.http.post<IProduct>(this.storeUrl, product, this.httpOptions).pipe(
-       tap((newProduct: IProduct) => this.log(`added product w/ id=${newProduct.id}`)),
-      catchError(this.handleError)
-    );
+		let newProduct : string = JSON.stringify(product);
+	    return this.http.post<IProduct>(this.storeUrl, JSON.parse(newProduct), this.httpOptions).pipe(
+      		catchError(this.handleError<IProduct>('addProduct'))
+    	);
   }
 
 
   delProduct (product: IProduct | number): Observable<IProduct> {
-    const id = typeof product === 'number' ? product : product.id;
-    const url = `${this.storeUrl}/${id}`;
-
-    return this.http.delete<IProduct>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted product id=${id}`)),
-      catchError(this.handleError)
-    );
+    	const id = typeof product === 'number' ? product : product.id;
+    	const url = `${this.storeUrl}/${id}`;
+    	return this.http.delete<IProduct>(url, this.httpOptions).pipe(
+      		catchError(this.handleError)
+    	);
   }
 
 
-
-
-		private handleError(err: HttpErrorResponse) {
-		let errorMessage = '';
-		if (err.error instanceof ErrorEvent) {
-			errorMessage = `An error occurred: ${err.error.message}`;
-		} else {
-			errorMessage = `Server returned code: ${err.status}, error message is: ${err.message}`;
-		}
-		console.error(errorMessage);
-		return throwError(errorMessage);
-
-	}
-
-	  private log(message: string) {
-    this.messageService.add(`ProductService: ${message}`);
+  private handleError<T> (operation = 'operation', result?: T) {
+  	  return (error: any): Observable<T> => {
+      return of(result as T);
+    };
   }
-
-
 
 }

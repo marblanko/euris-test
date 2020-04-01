@@ -1,9 +1,10 @@
 @import 'reset.css';
+
 @import url("https://fonts.googleapis.com/css?family=Quantico");
 @import url("https://fonts.googleapis.com/css?family=Saira");
 @import url("https://fonts.googleapis.com/css?family=Saira+Semi+Condensed");
 
-/* You can add global styles to this file, and also import other style files */
+
 
 body {
     padding: .5rem;

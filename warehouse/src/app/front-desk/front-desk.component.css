@@ -4,10 +4,40 @@ div.tool-block {
     left: 0;
 }
 
+div.alert-box {
+	position: fixed;
+	top:5rem;
+	left:15rem;
+	border-radius: 1.5rem;
+    padding:1rem;
+    color:#fff;
+    font-size:1.5rem;
+    font-weight: bold;
+    border:1.5px solid #fff;
+	
+}
+
+div.added {
+	background:#90EE90;
+}
+
+div.deleted {
+	background:#C4001B;
+}
+
 div.tool-block button {
     background: #FFA56B;
     border-radius: 1.5rem;
+    min-width:7rem;
+    margin:0 0 0 1rem;
+    font-weight:bold;
 }
+
+div.tool-block button:hover, div.tool-block button.higlight {
+	background: #A24000;
+	color:#fff;
+	}
+
 
 div.add-product-block {
     background: #FF8C41;

@@ -2,7 +2,7 @@
     <button *ngIf="isWide" (click)="isWide = false">Grid Layout</button>
     <button *ngIf="!isWide" (click)="isWide = true">Panel Layout</button>
     <button *ngIf="!menuOpen" (click)="menuOpen = true">Add New Product +</button>
-    <button class="" *ngIf="menuOpen" (click)="menuOpen = false">Add New Product -</button>
+    <button class="higlight" *ngIf="menuOpen" (click)="menuOpen = false">Add New Product -</button>
     <div class="add-product-block" *ngIf="menuOpen">
         <ul>
             <li>
@@ -46,4 +46,7 @@
             <li class="product-employee">employee: {{product.data.employee}}</li>
         </ul>
     </div>
+</div>
+<div class="alert-box" [ngClass]="alertBoxClass" *ngIf="alertBox">
+    <p>{{alertBoxContent}}</p>
 </div>

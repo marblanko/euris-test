@@ -9,10 +9,9 @@ import { IProduct } from '../product';
 })
 export class FrontDeskComponent implements OnInit {
 	products : IProduct[];
-	singleProduct : IProduct[] =  [];
 	errorMessage : string;
 	serverName: string = '';
-	productObject: IProduct[] =  [];
+	productObject: IProduct[];
 	prodTitle : string;
 	prodCategory : string;
 	prodPrice : number;
@@ -20,6 +19,9 @@ export class FrontDeskComponent implements OnInit {
 	prodDesc : string;
 	isWide : boolean;
 	menuOpen : boolean;
+	alertBox : boolean;
+	alertBoxClass : string; 
+	alertBoxContent : string;
 
 
   constructor(private checkStockService : CheckStockService) { }
@@ -40,29 +42,36 @@ export class FrontDeskComponent implements OnInit {
 	);
   }
 
-  addProduct(product: IProduct) {
+  addProduct() {
   	let productObject = {
   		title : this.prodTitle,
   		category : this.prodCategory,
   		price : this.prodPrice,
   		employee : this.prodEmployee,
   		description : this.prodDesc
-  		}
-  	   this.checkStockService.addProduct( productObject as IProduct)
-       .subscribe(product => {
-        this.products.push(product);
-	    console.dir(product);
-	  });
-  
-}
+  	}
 
-
+	this.checkStockService.addProduct( productObject as IProduct).subscribe(
+		product => this.alertDisplay('added') 
+		);
+  }
 
   delProduct(product: IProduct): void {
     this.products = this.products.filter(h => h !== product);
-    this.checkStockService.delProduct(product).subscribe();
+    this.checkStockService.delProduct(product).subscribe(
+    	product => this.alertDisplay('deleted')
+    	);
   }
 
+  alertDisplay(action : string) {
+  	this.menuOpen = false;
+  	this.alertBoxClass = action;
+  	this.alertBox = true;
+  	this.alertBoxContent = 'Succesfully ' + action + ' a product';
+ 	this.getProducts();
+ 	setTimeout(() => this.alertBox = false, 3000);
+  	console.log(action);
+  }
 
 }
 
