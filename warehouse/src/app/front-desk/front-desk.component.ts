@@ -10,16 +10,15 @@ import { IProduct } from '../product';
 export class FrontDeskComponent implements OnInit {
 	products : IProduct[];
 	errorMessage : string;
-	serverName: string = '';
 	productObject: IProduct[];
 	prodTitle : string;
 	prodCategory : string;
 	prodPrice : number;
 	prodEmployee : string;
 	prodDesc : string;
-	isWide : boolean;
-	menuOpen : boolean;
-	alertBox : boolean;
+	isWide : boolean = false;
+	menuOpen : boolean = false;
+	alertBox : boolean = false;
 	alertBoxClass : string; 
 	alertBoxContent : string;
 
@@ -27,9 +26,6 @@ export class FrontDeskComponent implements OnInit {
   constructor(private checkStockService : CheckStockService) { }
 
   ngOnInit() {
-
-  	let isWide = false;
-  	let menuOpen = false;
   	this.getProducts();
   }
 
@@ -68,9 +64,8 @@ export class FrontDeskComponent implements OnInit {
   	this.alertBoxClass = action;
   	this.alertBox = true;
   	this.alertBoxContent = 'Succesfully ' + action + ' a product';
+  	setTimeout(() => this.alertBox = false, 3000);
  	this.getProducts();
- 	setTimeout(() => this.alertBox = false, 3000);
-  	console.log(action);
   }
 
 }

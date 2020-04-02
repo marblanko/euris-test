@@ -1,8 +1,8 @@
 <div class="tool-block">
-    <button *ngIf="isWide" (click)="isWide = false">Grid Layout</button>
-    <button *ngIf="!isWide" (click)="isWide = true">Panel Layout</button>
-    <button *ngIf="!menuOpen" (click)="menuOpen = true">Add New Product +</button>
-    <button class="higlight" *ngIf="menuOpen" (click)="menuOpen = false">Add New Product -</button>
+    <button class="layout-toggle-button-wide" *ngIf="isWide" (click)="isWide = false">Grid Layout</button>
+    <button class="layout-toggle-button-narrow" *ngIf="!isWide" (click)="isWide = true">Panel Layout</button>
+    <button class="add-button" *ngIf="!menuOpen" (click)="menuOpen = true">Add New Product +</button>
+    <button class="add-button higlight" *ngIf="menuOpen" (click)="menuOpen = false">Add New Product -</button>
     <div class="add-product-block" *ngIf="menuOpen">
         <ul>
             <li>
@@ -31,7 +31,10 @@
                 <input class="product-input" type="text" [(ngModel)]="prodEmployee">
             </li>
         </ul>
-        <button (click)="addProduct()">Add Product</button>
+        <button class="add-new-product" (click)="addProduct()">Add Product</button>
+    </div>
+    <div class="chart-component">
+    	<chart-app [chartData]="products"></chart-app>
     </div>
 </div>
 <div class="main-product-block" *ngIf="products && products.length">

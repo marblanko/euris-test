@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { CheckStockService } from './check-stock.service';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 describe('CheckStockService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

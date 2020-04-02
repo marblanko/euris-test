@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IProduct } from './product';
-import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, tap, map } from 'rxjs/operators';
@@ -18,8 +17,7 @@ httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor( private http : HttpClient,
-    private messageService: MessageService ) {}
+  constructor( private http : HttpClient ) {}
 
 
   	getProducts() : Observable<IProduct[]> {
