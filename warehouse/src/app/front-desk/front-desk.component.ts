@@ -22,7 +22,6 @@ export class FrontDeskComponent implements OnInit {
 	alertBoxClass : string; 
 	alertBoxContent : string;
 
-
   constructor(private checkStockService : CheckStockService) { }
 
   ngOnInit() {
@@ -64,7 +63,7 @@ export class FrontDeskComponent implements OnInit {
   	this.alertBoxClass = action;
   	this.alertBox = true;
   	this.alertBoxContent = 'Succesfully ' + action + ' a product';
-  	setTimeout(() => this.alertBox = false, 3000);
+  	setTimeout(() => this.alertBox = false, 2500);
  	this.getProducts();
   }
 

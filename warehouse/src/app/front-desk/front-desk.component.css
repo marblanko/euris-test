@@ -1,43 +1,44 @@
 div.tool-block {
+    margin: 0;
+    padding: 0;
     position: relative;
     top: 0;
     left: 0;
 }
 
 div.alert-box {
-	position: fixed;
-	top:5rem;
-	left:15rem;
-	border-radius: 1.5rem;
-    padding:1rem;
-    color:#fff;
-    font-size:1.5rem;
+    position: fixed;
+    top: 5rem;
+    left: 15rem;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
     font-weight: bold;
-    border:1.5px solid #fff;
-	
+    border: 1.5px solid #fff;
 }
 
 div.added {
-	background:#90EE90;
+    background: #90EE90;
 }
 
 div.deleted {
-	background:#C4001B;
+    background: #C4001B;
 }
 
 div.tool-block button {
     background: #FFA56B;
     border-radius: 1.5rem;
-    min-width:7rem;
-    margin:0 0 0 1rem;
-    font-weight:bold;
+    min-width: 7rem;
+    margin: 0 1rem 0 0;
+    font-weight: bold;
 }
 
-div.tool-block button:hover, div.tool-block button.higlight {
-	background: #A24000;
-	color:#fff;
-	}
-
+div.tool-block button:hover,
+div.tool-block button.higlight {
+    background: #A24000;
+    color: #fff;
+}
 
 div.add-product-block {
     background: #FF8C41;
@@ -45,7 +46,18 @@ div.add-product-block {
     box-shadow: 5px 5px 20px #FFF;
     padding: 1rem;
     position: absolute;
-    left: 6rem;
+    left: 8rem;
+    top: 1.9rem;
+    z-index: 3000;
+}
+
+div.chart-component {
+    background: #FFF;
+    border-radius: 1.5rem;
+    box-shadow: 5px 5px 20px #FFF;
+    padding: 1rem;
+    position: absolute;
+    left: 12rem;
     top: 2rem;
     z-index: 3000;
 }
@@ -62,12 +74,16 @@ div.main-product-block {
 }
 
 div.product-list {
-    padding: 1rem;
+    padding: 1rem .7rem 1rem 1rem;
     background: #FFA710;
     border-radius: 1.5rem;
     position: relative;
     top: 0;
     left: 0;
+}
+
+span.bolder {
+    font-weight: bold;
 }
 
 .narrow {
@@ -85,17 +101,21 @@ div.product-list {
 h2.product-title {
     font-size: 1.2rem;
     font-weight: bold;
-    padding: 0 0 .2rem 0;
+    padding: 0 0 .6rem 0;
+    margin: 0 0 .5rem 0;
+    border-bottom: 1.5px solid black;
 }
 
-.product-details {
+ul.product-details li {
     font-size: 1rem;
+    padding: 0 0 .5rem 0;
 }
 
 button {
     border-radius: .8rem;
     border: none;
-    padding: .5rem;
+    padding: .3rem .5rem;
+    font-family: 'Saira Semi Condensed', sans-serif;
 }
 
 button.delete-button {
