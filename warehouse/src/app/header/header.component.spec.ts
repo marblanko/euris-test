@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { By } from '@angular/platform-browser';
 import { HeaderComponent } from './header.component';
 
-describe('HeaderComponent', () => {
+describe('HeaderComponent tests', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
 
@@ -25,11 +25,11 @@ describe('HeaderComponent', () => {
     expect(app.title).toEqual('The Warehouse');
   });
 
-
-      it('should have the correct title', () => {
+  it('should have the correct title within the H1 in the page', () => {
     const fixture = TestBed.createComponent(HeaderComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('div.header-area h1').textContent).toContain('The Warehouse');
+    expect(compiled.querySelector('h1').textContent).toContain('The Warehouse');
   });
+     
 });

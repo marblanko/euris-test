@@ -22,7 +22,7 @@ httpOptions = {
 
   	getProducts() : Observable<IProduct[]> {
 		return this.http.get<IProduct[]>(this.storeUrl, this.httpOptions).pipe(
-			catchError(this.handleError)
+			catchError(this.handleError<IProduct[]>('getProducts', []))
 			);
 	}
 
@@ -33,20 +33,20 @@ httpOptions = {
     	);
   }
 
-
   delProduct (product: IProduct | number): Observable<IProduct> {
     	const id = typeof product === 'number' ? product : product.id;
     	const url = `${this.storeUrl}/${id}`;
     	return this.http.delete<IProduct>(url, this.httpOptions).pipe(
-      		catchError(this.handleError)
+      		catchError(this.handleError<IProduct>('delProduct'))
     	);
   }
 
-
   private handleError<T> (operation = 'operation', result?: T) {
-  	  return (error: any): Observable<T> => {
-      return of(result as T);
-    };
-  }
+  return (error: any): Observable<T> => {
+    console.error(error); // log to console instead
+    console.log(`${operation} failed: ${error.message}`);
+    return of(result as T);
+  };
+}
 
 }
